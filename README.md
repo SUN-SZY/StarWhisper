@@ -1,18 +1,15 @@
-# 星语StarWhisper
-
-🤖 <a href="https://www.modelscope.cn/models/AstroYuYang/StarWhisper4">多模态模型权重</a>
-🥳 <a href="https://www.liblib.art/modelinfo/f188f72645024f82bd114344cf82474f">星语绘卷权重</a>
+# 星语4.0
 
 [![GitHub Repo stars](https://img.shields.io/github/stars/Yu-Yang-Li/StarWhisper?style=social)](https://github.com/Yu-Yang-Li/StarWhisper/stargazers)
 [![GitHub Code License](https://img.shields.io/github/license/Yu-Yang-Li/StarWhisper)](LICENSE)
 [![GitHub last commit](https://img.shields.io/github/last-commit/Yu-Yang-Li/StarWhisper)](https://github.com/Yu-Yang-Li/StarWhisper/commits/main)
 
 
-在国家天文台-之江实验室的支持下，我们开发了StarWhisper4天文大模型系列，包括语言模型、时序模型、多模态模型（7B-72B）。 
+在国家天文台-之江实验室的支持下，我们开发了星语4.0天文大模型系列，包括语言模型、时序模型、多模态模型（7B-72B）。 
 
 ## 版本更新：
 
-1.通过清洗订正科普、科研数据飞轮得到的数据，改进训练方法，进一步提升了模型的天文物理、代码与Agent能力，开源了星语3训练集于LLM_Data目录，开源了星语4多模态模型权重于魔搭平台。
+1.通过清洗订正科普、科研数据飞轮得到的数据，改进训练方法，进一步提升了模型的天文物理、代码与Agent能力，开源了星语3训练集于LLM_Data目录，即将开源星语4.0权重于魔搭平台。
 
 2.发布了[StarWhisper Pulsar](https://openreview.net/pdf?id=8SKgWpZiDL)的技术报告，一种SOTA的基于多模态大模型的脉冲星识别方法。
 
@@ -29,76 +26,6 @@
 
 <div align=center><img src="example/图片2.png"/></div>
 
-
-## 快速使用
-
-下面是一个使用StarWhisper4模型，进行多轮对话交互的样例：
-
-```python
-from transformers import Qwen2VLForConditionalGeneration, AutoTokenizer, AutoProcessor
-from qwen_vl_utils import process_vision_info
-from modelscope import snapshot_download
-model_dir = snapshot_download("AstroYuYang/StarWhisper4")
-
-# default: Load the model on the available device(s)
-model = Qwen2VLForConditionalGeneration.from_pretrained(
-    model_dir, torch_dtype="auto", device_map="auto"
-)
-
-# We recommend enabling flash_attention_2 for better acceleration and memory saving, especially in multi-image and video scenarios.
-# model = Qwen2VLForConditionalGeneration.from_pretrained(
-#     model_dir,
-#     torch_dtype=torch.bfloat16,
-#     attn_implementation="flash_attention_2",
-#     device_map="auto",
-# )
-
-# default processer
-processor = AutoProcessor.from_pretrained(model_dir)
-
-# The default range for the number of visual tokens per image in the model is 4-16384. You can set min_pixels and max_pixels according to your needs, such as a token count range of 256-1280, to balance speed and memory usage.
-# min_pixels = 256*28*28
-# max_pixels = 1280*28*28
-# processor = AutoProcessor.from_pretrained(model_dir, min_pixels=min_pixels, max_pixels=max_pixels)
-
-messages = [
-    {
-        "role": "user",
-        "content": [
-            {
-                "type": "image",
-                "image": "https://qianwen-res.oss-cn-beijing.aliyuncs.com/Qwen-VL/assets/demo.jpeg",
-            },
-            {"type": "text", "text": "Describe this image."},
-        ],
-    }
-]
-
-# Preparation for inference
-text = processor.apply_chat_template(
-    messages, tokenize=False, add_generation_prompt=True
-)
-image_inputs, video_inputs = process_vision_info(messages)
-inputs = processor(
-    text=[text],
-    images=image_inputs,
-    videos=video_inputs,
-    padding=True,
-    return_tensors="pt",
-)
-inputs = inputs.to("cuda")
-
-# Inference: Generation of the output
-generated_ids = model.generate(**inputs, max_new_tokens=128)
-generated_ids_trimmed = [
-    out_ids[len(in_ids) :] for in_ids, out_ids in zip(inputs.input_ids, generated_ids)
-]
-output_text = processor.batch_decode(
-    generated_ids_trimmed, skip_special_tokens=True, clean_up_tokenization_spaces=False
-)
-print(output_text)
-
-```
 
 ## 司天工程
 

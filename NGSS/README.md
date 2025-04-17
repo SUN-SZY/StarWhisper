@@ -15,7 +15,7 @@ src/
 ## Service Execution
 **Start the NGSS service:**
 ```bash
-python src/app/app2.py
+uvicorn main:app2.py --reload
 ```
 Capabilities:
 - Observation planning
@@ -71,7 +71,7 @@ Configure in:
 `src/module/UdpConnect.py`
 
 ### 2. x-opstep Deployment
-Required dependencies:
+[X-OPSTEP](https://github.com/Shinehope-Chen/X-OPSTEP/blob/master/README.md) required dependencies:
 - astrometry.net
 - ASTAP
 - Scamp

@@ -1,0 +1,182 @@
+{
+  "name": "制定观测计划",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "220d9685-e947-4447-9f0d-e0601a31f310",
+      "name": "Execute Workflow Trigger",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1,
+      "position": [
+        220,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "url": "http://127.0.0.1:80/update_station",
+        "options": {}
+      },
+      "id": "d8f5e1f5-3430-4df3-8175-990373358ca7",
+      "name": "update_station",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        400,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "url": "http://127.0.0.1:80/plan_observation",
+        "options": {}
+      },
+      "id": "fe60ef91-726d-4197-a452-530604f88f7f",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        580,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "65fdf47f-0489-411b-88b0-88f9cff31ac2",
+              "name": "更新台站信息的结果",
+              "value": "={{ $('update_station').item.json.update_msg }}",
+              "type": "string"
+            },
+            {
+              "id": "94c649d3-27f4-437f-abf2-d9f98e314b5c",
+              "name": "uuid",
+              "value": "={{ $json.uu_id }}",
+              "type": "string"
+            },
+            {
+              "id": "7740d4bb-d3ac-4e16-b404-0dd03c47cf9b",
+              "name": "url",
+              "value": "http://127.0.0.1:80/check_log",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b860ac08-718c-42f5-811e-a7e2379dc174",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        780,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "destinationFieldName": "response",
+        "options": {}
+      },
+      "id": "cef74622-ed57-48af-9a72-af882ace5bc7",
+      "name": "Aggregate",
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        980,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 9
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        220,
+        160
+      ],
+      "id": "83abbd01-ddc9-40f5-b2c3-62f14d097346",
+      "name": "Schedule Trigger"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Execute Workflow Trigger": {
+      "main": [
+        [
+          {
+            "node": "update_station",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "update_station": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "update_station",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "5783b145-4dd1-4780-b18e-6fced9e7bae4",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "9152398f4cb6cc19d306038c20ee549dc618bdaa40bb5266531f858646672246"
+  },
+  "id": "oefVOxuLXznxWZNQ",
+  "tags": []
+}

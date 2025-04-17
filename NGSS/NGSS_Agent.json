@@ -1,0 +1,434 @@
+{
+  "name": "NGSS Agent v2.2 github",
+  "nodes": [
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "e95bf439-633e-4e45-9652-504261e4644b",
+              "name": "Text",
+              "value": "={{ $json.chatInput }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f8129c6d-6568-4943-80e1-e2df34d47e5e",
+      "name": "Text1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -200,
+        840
+      ]
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "5",
+        "contextWindowLength": 10
+      },
+      "id": "287de1ff-458b-442c-91dd-7886d2c5f364",
+      "name": "Window Buffer Memory",
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.2,
+      "position": [
+        60,
+        1120
+      ]
+    },
+    {
+      "parameters": {
+        "name": "Control_NINA_telescope",
+        "description": "=调用该工具以开始/停止观测。\n\n## 需要输入的参数\n1.station： 台站，台站名称的小写中文全拼，可选值为：xinglong, gansu, yunnan, yunnan_chuxiong, all（其中all表示所有站点），格式为字符串；\n2. telescope：望远镜编号，表示该日期该台站的第几号望远镜，是一个数字。\n3. action：想让望远镜执行的动作，可选值：start，stop。（其中start表示开始观测，stop表示停止观测）\n\n如果用户在上下文中没有给定以上参数中的任何一个，请主动询问用户。\n\n## 返回值\n望远镜控制结果\n\n\n",
+        "workflowId": {
+          "__rl": true,
+          "value": "wneao2XsIIFzi4Dl",
+          "mode": "list",
+          "cachedResultName": "控制NINA"
+        },
+        "specifyInputSchema": true,
+        "jsonSchemaExample": "{\n  \"station\": \"xinglong\",\n  \"telescope\": 1,\n  \"action\": \"start\"\n}"
+      },
+      "id": "cedb4a77-19d7-4a3a-8c7a-d98983f3a125",
+      "name": "Control_NINA_telescope",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        580,
+        1240
+      ]
+    },
+    {
+      "parameters": {
+        "name": "Loading_observation_plan",
+        "description": "调用该工具以加载观测计划\n\n## 需要传入的参数\n1.station： 台站，台站名称的小写中文全拼，可选值为：xinglong, gansu, yunnan, yunnan_chuxiong, all（其中all表示所有站点），格式为字符串；\n2.query_dt: 日期，格式为YYYYMMDD的形式(例如20241110)，格式为字符串；\n3.telescope：望远镜编号，表示该日期该台站的第几号望远镜，是一个数字。\n\n如果用户在上下文中没有给定以上参数中的任何一个，请主动询问用户。\n\n## 返回值\n观测计划的加载结果",
+        "workflowId": {
+          "__rl": true,
+          "value": "wZSPZ2VLF2jDy9Yx",
+          "mode": "list",
+          "cachedResultName": "FTP"
+        },
+        "responsePropertyName": "Response",
+        "specifyInputSchema": true,
+        "jsonSchemaExample": "{\n\t\"station\": \"xinglong\",\n    \"query_dt\": \"20241010\",\n    \"telescope\": 1\n}"
+      },
+      "id": "a3af8947-a8a6-4fd1-8f7b-d27f26e39390",
+      "name": "Loading_observation_plan",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        260,
+        1240
+      ]
+    },
+    {
+      "parameters": {
+        "name": "Make_Observation_Plan",
+        "description": "=调用该工具以制定观测计划。可以为近邻星系巡天项目的所有站点，所有望远镜制定观测计划，以便开始每天的观测活动。\n\n不需要传入任何参数\n\n## 返回值\n- uuid：制定观测计划进程的唯一编号\n- url： 查看制定观测计划的日志信息的URL\n\n",
+        "workflowId": {
+          "__rl": true,
+          "value": "oefVOxuLXznxWZNQ",
+          "mode": "list",
+          "cachedResultName": "制定观测计划"
+        }
+      },
+      "id": "1975a90e-3e5e-42d2-9793-254b3621fc45",
+      "name": "Make_Observation_Plan",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        260,
+        1060
+      ]
+    },
+    {
+      "parameters": {
+        "name": "Add_Observation_Object",
+        "description": "调用该工具以添加观测目标并修改观测列表，并且返回加入成功的以及被这些源加入后移除掉的源。\n\n## 需要传入的参数\n1. oblist：观测源列表，格式是string（M21,M31,NGC1129这样的格式，其中逗号需要用英文逗号）。\n## 返回值\n加入成功的以及被这些源加入后移除掉的源",
+        "workflowId": {
+          "__rl": true,
+          "value": "XAobCDHMsmc0j4qQ",
+          "mode": "list",
+          "cachedResultName": "新增源"
+        },
+        "responsePropertyName": "output",
+        "specifyInputSchema": true,
+        "jsonSchemaExample": "{\n\t\"objlist\": \"aaa,bbb,ccc\"\n}"
+      },
+      "id": "65c88025-4b99-4348-a637-c2d1be51fcb9",
+      "name": "Add_Observation_Object",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        420,
+        1220
+      ]
+    },
+    {
+      "parameters": {
+        "name": "Transient_load",
+        "description": "调用该工具以查看某一天的暂现源，或者将暂现源加入今天的观测列表\n\n## 需要传入的参数\n1.station： 台站，台站名称的小写中文全拼，可选值为：xinglong, gansu, yunnan, yunnan_chuxiong, all（其中all表示所有站点），格式为字符串；\n2.query_dt: 日期，格式为YYYYMMDD的形式(例如20241110)，格式为字符串；\n3.telescope：望远镜编号，表示该日期该台站的第几号望远镜，是一个数字。\n\n如果用户在上下文中没有给定以上参数中的任何一个，请主动询问用户。\n\n## 返回值\n成功加入观测列表的目标、被替换掉的观测目标、查看所有暂现源的证认图和图像相减结果的url的情况",
+        "workflowId": {
+          "__rl": true,
+          "value": "6H8LR8gOED95mKB6",
+          "mode": "list",
+          "cachedResultName": "暂现源查看"
+        },
+        "responsePropertyName": "output",
+        "specifyInputSchema": true,
+        "jsonSchemaExample": "{\n\t\"station\": \"xinglong\",\n    \"query_dt\": \"20241118\",\n    \"telescope\": 1\n}"
+      },
+      "id": "5be5c4b3-1dcf-4f3d-9caa-d3a9c211c2ad",
+      "name": "Transient_load",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        560,
+        1060
+      ]
+    },
+    {
+      "parameters": {
+        "name": "Get_OB_List",
+        "description": "调用该工具以查看观测计划\n\n## 需要传入的参数\n1.station： 台站，台站名称的小写中文全拼，可选值为：xinglong, gansu, yunnan, yunnan_chuxiong, all（其中all表示所有站点），格式为字符串；\n2.query_dt: 日期，格式为YYYYMMDD的形式，格式为字符串；\n\n如果用户在上下文中没有给定以上参数中的任何一个，请主动询问用户。\n\n## 返回值\n- url:查看观测计划的url",
+        "workflowId": {
+          "__rl": true,
+          "value": "thhJNT76nxbZiRls",
+          "mode": "list",
+          "cachedResultName": "查看观测计划"
+        },
+        "responsePropertyName": "url",
+        "specifyInputSchema": true,
+        "jsonSchemaExample": "{\n\t\"station\": \"xinglong\",\n    \"query_dt\": \"20241010\"\n}"
+      },
+      "id": "f5da7091-6acf-4dff-a1e1-e5021debbbd2",
+      "name": "Get_OB_List",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        420,
+        1060
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# 功能演示\n## 制定观测计划\n## 查看制定观测计划的log\n## 查看观测列表\n## 我想查看12.13日的暂现源\n## 我想添加观测目标（将之加入观测列表）\n## 加载观测列表（发送给nina）\n## 开始观测\n## 结束观测",
+        "height": 413.68691663394134,
+        "width": 466.73268174158494
+      },
+      "id": "99b696a8-988a-4258-b6b4-aa32371f9171",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        800,
+        800
+      ]
+    },
+    {
+      "parameters": {
+        "public": true,
+        "authentication": "basicAuth",
+        "initialMessages": "你好！我是一位擅长制定望远镜星体观测计划的资深天文观测顾问，擅长综合利用各种工具和逻辑判断来为各天文台站站点的各望远镜安排观测计划，并提供适用的NINA软件观测列表。",
+        "options": {
+          "allowFileUploads": true,
+          "loadPreviousSession": "notSupported"
+        }
+      },
+      "id": "ebb413d0-533d-4e7d-b858-f3911c331c7c",
+      "name": "When chat message received",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -540,
+        840
+      ],
+      "webhookId": "33980675-c3af-4d8b-8536-2b83503c4e5b",
+      "credentials": {
+        "httpBasicAuth": {
+          "id": "ziciSX6ow6qa2eMj",
+          "name": "xinglong chat"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "= {{ $json.Text }}",
+        "options": {
+          "systemMessage": "=# 角色\n你是一位擅长制定望远镜星体观测计划的资深天文观测顾问，擅长综合利用各种工具和逻辑判断来为各天文台站站点的各望远镜安排观测计划，并提供适用的NINA软件观测列表。你需要尽可能调用工具完成任务，不要用Agent本身的能力。\n\n# 目标\n- 准确理解和分析用户的需求。\n- 根据需求，快速准确地调用相应的工具。\n- 确保工具的使用效果达到用户预期。\n\n\n# 全局参数定义\n1. station：台站站点，台站名称的小写中文全拼，可选值为：xinglong, gansu, yunnan, yunnan_chuxiong, all（其中all表示所有站点），格式为字符串\n2. query_dt：日期（格式为YYYYMMDD），格式为字符串\n3. telescope：望远镜编号（例如：1, 2, 3），格式为num\n\n# 技能\n## 技能 1: 制定观测计划\n### 工作流\n第一步，调用Make_Observation_Plan工具\n第二步，向用户返回以下两条信息：\n- uuid：制定观测计划进程的唯一编号\n- url： 查看制定观测计划的日志信息的URL（请直接输出）\n\n## 技能 2：查看观测计划\n### 触发条件\n用户明显表达出查看观测计划的结果/最终观测计划。\n### 功能\n该技能可以帮助用户查看一个观测站点的具体日期，具体望远镜的观测计划。\n### 工作流程：\n第一步，向用户询问台站站点（station）和日期（query_dt）\n第二步，调用工具Get_OB_List来获取查看观测计划的url\n第三步，向用户返回url（请直接输出），提示用户点击计划的链接来完成查看。\n第三步，询问用户“是否要让NINA软件加载该观测计划文件？”若用户的回答是肯定的，则继续调用【技能 3：加载观测计划文件】。\n\n## 技能 3：加载观测计划文件\n\n## 技能 4：操控NINA望远镜\n\n## 技能 5: 添加观测目标\n### 触发条件\n当且仅当用户明显表达出添加观测目标或修改观测列表时\n### 功能\n添加新的观测目标到观测列表\n### 工作流\n第一步，向用户询问需要添加的目标\n第二步，调用Add_Observation_Object工具\n第三步，将工具后的回复进行返回。\n\n## 技能6：查看某一天的暂现源，或者将暂现源加入今天的观测列表\n### 触发条件\n用户表达出需要查看前一日观测结果、图像相减结果、暂现源预报等描述时进行\n### 功能\n该技能能够查看某日的图像相减结果和暂现源预报。\n### 使用方法\n第一步：向用户询问台站站点station，日期query_dt，和望远镜编号telescope \n第二步：调用Transient_load工具来完成将某日的暂现源预报加入观测列表之中的工作。\n第三步：将所得结果输出。\n\n# 价值观\n- 用户需求至上，始终以满足用户需求为目标。\n\n# 限制\n- 必须遵循用户的要求和指令，准确调用相应的工具。\n- 仅回答与天文观测相关的问询，不能回答其它类型的问题。\n- 查询观测计划列表，不要执行技能1。\n- 用户用什么语言提问，你就用什么语言回答。\n- 尽可能地进行工具调用，即使需要调用的工具刚才已经成功调用过。\n- 如果成功调用某个工具，或没有得到指定的返回值，请重新调整策略或输入参数，再次调用该工具，直到成功为止。\n- 请主动向用户询问工具必须的参数。\n- 必须直接输出URL链接（例如请直接输出http://127.0.0.1:80/check_log，而不是![](http://127.0.0.1:80/check_log)）。\n",
+          "returnIntermediateSteps": true
+        }
+      },
+      "id": "a1e2c559-1aa8-4154-b442-50855bed059c",
+      "name": "Main Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.6,
+      "position": [
+        140,
+        840
+      ]
+    },
+    {
+      "parameters": {
+        "model": "qwen2.5:14b-instruct-q8_0",
+        "options": {
+          "temperature": 0.1,
+          "numCtx": 10000
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOllama",
+      "typeVersion": 1,
+      "position": [
+        -140,
+        1120
+      ],
+      "id": "496ccd55-fd21-4f46-a610-c271efffe177",
+      "name": "Ollama Chat Model",
+      "credentials": {
+        "ollamaApi": {
+          "id": "6Sv6rFJV67l3hoTZ",
+          "name": "Ollama account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "name": "Get_Weather_of_Xinglong_Observatory",
+        "description": "调用此工具以获得现在兴隆观测基地的天气",
+        "workflowId": {
+          "__rl": true,
+          "value": "4z3fnFPrRTPILfUh",
+          "mode": "list",
+          "cachedResultName": "获取天气情况"
+        },
+        "jsonSchemaExample": "{\n\t\"objlist\": \"aaa,bbb,ccc\"\n}"
+      },
+      "id": "41370c26-6e9f-4f20-907c-5921c09b1b9e",
+      "name": "Get Weather of Xinglong Observatory",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        400,
+        1440
+      ]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Text1": {
+      "main": [
+        [
+          {
+            "node": "Main Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Window Buffer Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "Main Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Control_NINA_telescope": {
+      "ai_tool": [
+        [
+          {
+            "node": "Main Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loading_observation_plan": {
+      "ai_tool": [
+        [
+          {
+            "node": "Main Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Make_Observation_Plan": {
+      "ai_tool": [
+        [
+          {
+            "node": "Main Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add_Observation_Object": {
+      "ai_tool": [
+        [
+          {
+            "node": "Main Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Transient_load": {
+      "ai_tool": [
+        [
+          {
+            "node": "Main Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get_OB_List": {
+      "ai_tool": [
+        [
+          {
+            "node": "Main Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Text1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ollama Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Main Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Weather of Xinglong Observatory": {
+      "ai_tool": [
+        [
+          {
+            "node": "Main Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "863c0d71-e4d1-49c9-ab88-3d4f55da301c",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "9152398f4cb6cc19d306038c20ee549dc618bdaa40bb5266531f858646672246"
+  },
+  "id": "npwQ4oTH6Ey0aiux",
+  "tags": [
+    {
+      "createdAt": "2025-04-16T12:24:57.152Z",
+      "updatedAt": "2025-04-16T12:24:57.152Z",
+      "id": "6rU5h3LaYfv8JCVy",
+      "name": "github"
+    },
+    {
+      "createdAt": "2024-11-25T12:19:10.810Z",
+      "updatedAt": "2024-11-25T12:19:10.810Z",
+      "id": "On2FgzwypmO4AHAs",
+      "name": "NGSS"
+    },
+    {
+      "createdAt": "2024-11-25T12:19:10.943Z",
+      "updatedAt": "2024-11-25T12:19:10.943Z",
+      "id": "U4EzD8gaexqyBA3r",
+      "name": "Agent"
+    }
+  ]
+}

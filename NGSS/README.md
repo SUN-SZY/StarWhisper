@@ -1,4 +1,3 @@
-```markdown
 # StarWhisper Telescope Code Documentation
 
 ## Project Structure
@@ -154,4 +153,3 @@ Transient_load(station, date, telescope) → analysis_results
 4. URL outputs must be plaintext (no markdown formatting)
 
 > **Note:** All operations require active connection to telescope control systems
-```

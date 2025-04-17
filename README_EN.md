@@ -5,7 +5,7 @@
 [![GitHub last commit](https://img.shields.io/github/last-commit/Yu-Yang-Li/StarWhisper)](https://github.com/Yu-Yang-Li/StarWhisper/commits/main)  
 
 <br>
-        中文&nbsp ｜ &nbsp<a href="README.md">English</a>&nbsp
+        <a href="README.md">中文</a> &nbsp ｜ &nbsp English &nbsp
 </p>
 
 Under the support of the National Astronomical Observatories and Zhipu Lab, we developed **StarWhisper 4.0**, a series of astronomical large-scale models including language models, time-series models, and multi-modal models (7B-72B).  

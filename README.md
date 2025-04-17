@@ -4,6 +4,9 @@
 [![GitHub Code License](https://img.shields.io/github/license/Yu-Yang-Li/StarWhisper)](LICENSE)
 [![GitHub last commit](https://img.shields.io/github/last-commit/Yu-Yang-Li/StarWhisper)](https://github.com/Yu-Yang-Li/StarWhisper/commits/main)
 
+<br>
+        中文&nbsp ｜ &nbsp<a href="README_EN.md">English</a>&nbsp
+</p>
 
 在国家天文台-之江实验室的支持下，我们开发了星语4.0天文大模型系列，包括语言模型、时序模型、多模态模型（7B-72B）。 
 

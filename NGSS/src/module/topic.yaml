@@ -1,0 +1,50 @@
+ftp_transfer:
+  xinglong:
+    telescope1:
+      topic: "/NGSS/Schedule/XL1"
+    telescope2:
+      topic: "/NGSS/Schedule/XL2"
+    telescope3:
+      topic: "/NGSS/Schedule/XL3"   
+    telescope4:
+      topic: "/NGSS/Schedule/XL4"
+    telescope5:
+      topic: "/NGSS/Schedule/XL5"
+    telescope6:
+      topic: "/NGSS/Schedule/XL6"
+    telescope7:
+      topic: "/NGSS/Schedule/XL7"
+  xinjiang:
+    telescope1:
+      topic: "/NGSS/Schedule/XJ1"
+  gansu:
+    telescope1:
+      topic: "/NGSS/Schedule/GS1"
+  yunnan:
+    telescope1:
+      topic: "/NGSS/Schedule/YN1"
+nina_action:
+  xinglong:
+    telescope1:
+      topic: "/NGSS/SendMsg/XL1"
+    telescope2:
+      topic: "/NGSS/SendMsg/XL2"
+    telescope3:
+      topic: "/NGSS/SendMsg/XL3"   
+    telescope4:
+      topic: "/NGSS/SendMsg/XL4"
+    telescope5:
+      topic: "/NGSS/SendMsg/XL5"
+    telescope6:
+      topic: "/NGSS/SendMsg/XL6"
+    telescope7:
+      topic: "/NGSS/SendMsg/XL7"
+  xinjiang:
+    telescope1:
+      topic: "/NGSS/SendMsg/XJ1"
+  gansu:
+    telescope1:
+      topic: "/NGSS/SendMsg/GS1"
+  yunnan:
+    telescope1:
+      topic: "/NGSS/SendMsg/YN1"

@@ -8,7 +8,7 @@
         <a href="README.md">中文</a> &nbsp ｜ &nbsp English &nbsp
 </p>
 
-Under the support of the NAOC and ZheJiang Lab, we developed **StarWhisper 4.0**, a series of astronomical large-scale models including language models, time-series models, and multi-modal models (7B-72B).  
+Under the support of the NAOC and ZheJiang Lab, we developed **StarWhisper 4.0**, a series of astronomical models including language models, time-series models, and multi-modal models (7B-72B).  
 
 ---
 
@@ -41,7 +41,7 @@ Under the support of the NAOC and ZheJiang Lab, we developed **StarWhisper 4.0**
 ---
 
 ## Sitian Project  
-**Sitian** is a major astronomical infrastructure proposed by Chinese astronomers for time-domain astronomy during the "15th Five-Year Plan". Phase I involves deploying **54 wide-field telescopes** (1-meter aperture, 18 groups) across multiple observation sites in China. These telescopes will form a multi-band monitoring network, enabling high-precision three-color "gaze" surveys of **10,000 square degrees** every 30 minutes. With a sampling frequency **two orders of magnitude higher** than global peers, Sitian will:  
+**Sitian** is a major astronomical infrastructure proposed by Chinese astronomers for time-domain astronomy. Phase I involves deploying **54 wide-field telescopes** (1-meter aperture, 18 groups) across multiple observation sites in China. These telescopes will form a multi-band monitoring network, enabling high-precision three-color "gaze" surveys of **10,000 square degrees** every 30 minutes. With a sampling frequency **two orders of magnitude higher** than global peers, Sitian will:  
 - Discover new celestial objects/phenomena in extreme energy bursts, gravitational wave counterparts, exoplanets, and solar system bodies.  
 - Address key scientific questions (e.g., dark matter, black holes, cosmic origins) and national space security (e.g., planetary defense).  
 

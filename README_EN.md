@@ -8,7 +8,7 @@
         <a href="README.md">中文</a> &nbsp ｜ &nbsp English &nbsp
 </p>
 
-Under the support of the National Astronomical Observatories and Zhipu Lab, we developed **StarWhisper 4.0**, a series of astronomical large-scale models including language models, time-series models, and multi-modal models (7B-72B).  
+Under the support of the NAOC and ZheJiang Lab, we developed **StarWhisper 4.0**, a series of astronomical large-scale models including language models, time-series models, and multi-modal models (7B-72B).  
 
 ---
 
@@ -53,7 +53,7 @@ As the **AI core** of Sitian's "brain," StarWhisper integrates astronomical know
 
 ## License  
 - Source code: **Apache-2.0 License**  
-- Qwen1.5-14B Chat model weights: Subject to their respective licenses.  
+- Qwen Chat model weights: Subject to their respective licenses.  
 
 ---
 

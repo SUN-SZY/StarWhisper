@@ -8,7 +8,10 @@ src/
 ├── module/       # Functional modules
 ├── script/       # Utility scripts
 └── util/         # General utilities
+observation Schedule/  # supporting materials, no need to download
+runningLog/            # supporting materials, no need to download
 ```
+
 
 ---
 

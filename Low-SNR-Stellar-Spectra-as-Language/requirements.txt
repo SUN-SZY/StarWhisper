@@ -1,0 +1,7 @@
+# PyTorch：请按 CUDA 版本从 https://pytorch.org 安装，勿直接 pip 装错轮子
+torch>=2.0.0
+numpy>=1.22.0
+pandas>=1.5.0
+tqdm>=4.64.0
+scikit-learn>=1.2.0
+matplotlib>=3.6.0

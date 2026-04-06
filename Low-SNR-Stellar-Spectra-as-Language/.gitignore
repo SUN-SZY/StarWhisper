@@ -1,0 +1,45 @@
+# Local / private documentation (not published on GitHub)
+private_docs/
+
+# Chinese readme (local only)
+README_zh.md
+
+# Data specification source (Word / drafts) — do not commit to GitHub
+数据说明.docx
+**/数据说明.docx
+*数据说明*.docx
+
+# Legacy fine-tune experiment folders (local backup only)
+25-30微调/
+9-11微调/
+7-9微调/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+dist/
+build/
+.venv/
+venv/
+.env
+
+# Training artifacts
+*.pth
+*.pt
+logs/
+log/
+ckpts/
+output/
+pth/
+
+# Generated or large CSV under data/ (keep directory with .gitkeep)
+data/*.csv
+
+# IDE / OS
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db

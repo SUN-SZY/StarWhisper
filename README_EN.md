@@ -15,6 +15,7 @@ Virtual-GOTTA targets embodied-intelligence transformation for scientific telesc
 
 - [Virtual-GOTTA Map](https://yu-yang-li.github.io/StarWhisper/virtual-gotta-map.html): interactive roadmap
 - [PPT Source Notes](https://yu-yang-li.github.io/StarWhisper/virtual-gotta-source.html): notes based on the *人工智能驱动科教科研* presentation
+- [Published Paper](https://doi.org/10.1038/s44172-025-00520-4): StarWhisper Telescope in Communications Engineering 4, 184 (2025)
 
 ---
 
@@ -33,9 +34,9 @@ Virtual-GOTTA targets embodied-intelligence transformation for scientific telesc
    - Test code related to the paper is uploaded.  
    <div align=center><img src="example/StarWhisper LC.png" width="600"/></div>  
 
-4. **[StarWhisper Telescope](https://arxiv.org/pdf/2412.06412)**  
-   - Agent-based telescope control workflow for the Near-Neighbor Galaxy Survey System (NGSS).  
-   - Code is open-sourced in the `NGSS` directory.  
+4. **[StarWhisper Telescope: an AI framework for automating end-to-end astronomical observations](https://doi.org/10.1038/s44172-025-00520-4)**  
+   - Published in *Communications Engineering* 4, 184 (2025).  
+   - Agent-based telescope control workflow for the Near-Neighbor Galaxy Survey System (NGSS). Code is open-sourced in the `NGSS` directory.  
    <div align=center><img src="example/Starwhisper Telescope.png" width="600"/></div>  
 
 5. **Virtual-GOTTA / StarWhisper 5.0+**  
@@ -87,20 +88,20 @@ As the **AI core** of Sitian's "brain," StarWhisper integrates astronomical know
 
 ---
 
-## Citation  
+## Citation
+If this work is useful to you, please cite the latest published paper:
+
 ```BibTeX
-@misc{wang2024starwhispertelescopeagentbasedobservation,
-      title={StarWhisper Telescope: Agent-Based Observation Assistant System to Approach AI Astrophysicist}, 
-      author={Cunshi Wang and Xinjie Hu and Yu Zhang and Xunhao Chen and Pengliang Du and Yiming Mao and Rui Wang and Yuyang Li and Ying Wu and Hang Yang and Yansong Li and Beichuan Wang and Haiyang Mu and Zheng Wang and Jianfeng Tian and Liang Ge and Yongna Mao and Shengming Li and Xiaomeng Lu and Jinhang Zou and Yang Huang and Ningchen Sun and Jie Zheng and Min He and Yu Bai and Junjie Jin and Hong Wu and Chaohui Shang and Jifeng Liu},
-      year={2024},
-      eprint={2412.06412},
-      archivePrefix={arXiv},
-      primaryClass={astro-ph.IM},
-      url={https://arxiv.org/abs/2412.06412}, 
+@article{wang2025starwhisper,
+  title={StarWhisper Telescope: an AI framework for automating end-to-end astronomical observations},
+  author={Wang, Cunshi and Zhang, Yu and Li, Yuyang and Hu, Xinjie and Mao, Yiming and Chen, Xunhao and Du, Pengliang and Wang, Rui and Wu, Ying and Yang, Hang and Li, Yansong and Wang, Beichuan and Mu, Haiyang and Chen, Xiaohan and He, Shunxuan and Mo, Hao and Zhang, Liyue and Du, Lin and Zhao, Yunning and Tian, Jianfeng and Ge, Liang and Mao, Yongna and Li, Shengming and Wang, Zheng and Lu, Xiaomeng and Zou, Jinhang and Huang, Yang and Sun, Ningchen and Zheng, Jie and He, Min and Bai, Yu and Jin, Junjie and Wu, Hong and Liu, Jifeng},
+  journal={Communications Engineering},
+  volume={4},
+  pages={184},
+  year={2025},
+  doi={10.1038/s44172-025-00520-4},
+  url={https://doi.org/10.1038/s44172-025-00520-4}
 }
 ```
-
----
-
 ## Star History  
 ![Star History Chart](https://api.star-history.com/svg?repos=Yu-Yang-Li/StarWhisper&type=Date)

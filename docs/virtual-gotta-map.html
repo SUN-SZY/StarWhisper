@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Virtual-GOTTA | StarWhisper Telescope Roadmap</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #172033;
+      --muted: #5d677a;
+      --line: #d7deea;
+      --panel: #ffffff;
+      --bg: #f4f7fb;
+      --blue: #2f77d0;
+      --green: #16845f;
+      --orange: #cf6a24;
+      --violet: #6d57b8;
+      --red: #ba3d3d;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, "Segoe UI", "Microsoft YaHei", Arial, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.55;
+    }
+
+    header {
+      padding: 32px 24px 18px;
+      background: #111827;
+      color: #fff;
+      border-bottom: 4px solid var(--blue);
+    }
+
+    .wrap {
+      width: min(1160px, calc(100vw - 32px));
+      margin: 0 auto;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.12;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      margin: 12px 0 0;
+      max-width: 900px;
+      color: #d9e3f2;
+      font-size: 16px;
+    }
+
+    main {
+      padding: 24px 0 36px;
+    }
+
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .metric, .detail, .node {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: 0 10px 26px rgba(23, 32, 51, 0.06);
+    }
+
+    .metric {
+      padding: 14px 16px;
+      min-height: 100px;
+    }
+
+    .metric b {
+      display: block;
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 650;
+      margin-bottom: 8px;
+    }
+
+    .metric span {
+      display: block;
+      font-size: 20px;
+      font-weight: 750;
+    }
+
+    .board {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      overflow: hidden;
+    }
+
+    .stage {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(5, minmax(140px, 1fr));
+      gap: 14px;
+      align-items: stretch;
+      min-height: 360px;
+    }
+
+    .node {
+      position: relative;
+      padding: 16px;
+      cursor: pointer;
+      transition: transform .15s ease, border-color .15s ease, box-shadow .15s ease;
+    }
+
+    .node:hover, .node.active {
+      transform: translateY(-2px);
+      border-color: var(--blue);
+      box-shadow: 0 14px 32px rgba(47, 119, 208, 0.14);
+    }
+
+    .node h2 {
+      margin: 0 0 8px;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+
+    .node p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      height: 24px;
+      padding: 0 8px;
+      border-radius: 999px;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      white-space: nowrap;
+    }
+
+    .ai { background: var(--blue); }
+    .infra { background: var(--green); }
+    .agent { background: var(--violet); }
+    .alert { background: var(--orange); }
+    .science { background: var(--red); }
+
+    .flow {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 6px;
+    }
+
+    .flow-step {
+      border: 1px dashed var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      background: #f9fbfe;
+      min-height: 94px;
+    }
+
+    .flow-step strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .flow-step small {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .detail {
+      margin-top: 16px;
+      padding: 18px;
+    }
+
+    .detail h2 {
+      margin: 0 0 8px;
+      font-size: 20px;
+    }
+
+    .detail p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    footer {
+      padding: 0 0 28px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 900px) {
+      .summary { grid-template-columns: repeat(2, 1fr); }
+      .stage { grid-template-columns: 1fr; }
+      .flow { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 560px) {
+      .summary { grid-template-columns: 1fr; }
+      header { padding: 24px 16px 16px; }
+      .wrap { width: calc(100vw - 24px); }
+      .board { padding: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <h1>Virtual-GOTTA: 基于人工智能的虚拟司天工程</h1>
+      <p class="subtitle">基于《人工智能驱动科教科研》PPT：从 StarWhisper Telescope 到星语5.0+，面向科学级望远镜的具身智能化改造。</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="summary" aria-label="Project summary">
+      <div class="metric"><b>核心目标</b><span>AI Astrophysicist</span></div>
+      <div class="metric"><b>工程对象</b><span>具身智能望远镜</span></div>
+      <div class="metric"><b>响应链路</b><span>警报到观测</span></div>
+      <div class="metric"><b>早期应用</b><span>超新星时钟</span></div>
+    </section>
+
+    <section class="board" aria-label="Virtual-GOTTA map">
+      <div class="stage">
+        <article class="node active" data-title="StarWhisper 大模型入口" data-body="星语3.0首次接入天文望远镜，星语4.0驱动近邻星系巡天项目并完善规划、执行、报告闭环；星语5.0+面向科学级望远镜的具身智能化改造。">
+          <span class="tag ai">Model</span>
+          <h2>StarWhisper</h2>
+          <p>天文语言、时序、多模态模型与智能体能力。</p>
+        </article>
+
+        <article class="node" data-title="StarWhisper Telescope" data-body="StarWhisper Telescope 是基于大模型智能体的望远镜观测助手，目标是接近 AI Astrophysicist，把自然语言、人机交互和观测执行连接起来。">
+          <span class="tag agent">Agent</span>
+          <h2>SWT</h2>
+          <p>Agent-Based Observation Assistant System。</p>
+        </article>
+
+        <article class="node" data-title="台站与望远镜状态" data-body="Virtual-GOTTA 需要整合台站信息、望远镜状态、观测条件和实时响应能力，让智能体知道哪里能观测、何时能观测、怎样执行。">
+          <span class="tag infra">Infra</span>
+          <h2>台站网络</h2>
+          <p>全球暂现源望远镜数据组网系统。</p>
+        </article>
+
+        <article class="node" data-title="暂现源警报与实时响应" data-body="系统把警报发布、台站信息、望远镜状态、实时响应打通，降低后随观测启动延迟，服务小于1天爆发的极早期候选发现。">
+          <span class="tag alert">Alert</span>
+          <h2>实时警报</h2>
+          <p>从事件触发到观测计划与执行。</p>
+        </article>
+
+        <article class="node" data-title="科学产出" data-body="超新星时钟已经提供多颗小于1天爆发的极早期超新星候选警报，是 Virtual-GOTTA 链路的直接科学应用之一。">
+          <span class="tag science">Science</span>
+          <h2>SN Clock</h2>
+          <p>极早期超新星候选警报。</p>
+        </article>
+
+        <div class="flow" aria-label="Response flow">
+          <div class="flow-step"><strong>1. Alert Release</strong><small>暂现源候选触发，进入智能体上下文。</small></div>
+          <div class="flow-step"><strong>2. Station Context</strong><small>读取台站、天气、设备和可观测窗口。</small></div>
+          <div class="flow-step"><strong>3. Telescope Action</strong><small>生成后随观测计划并驱动执行。</small></div>
+          <div class="flow-step"><strong>4. Science Feedback</strong><small>回传观测结果，形成规划-执行-报告闭环。</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="detail" aria-live="polite">
+      <h2 id="detail-title">StarWhisper 大模型入口</h2>
+      <p id="detail-body">星语3.0首次接入天文望远镜，星语4.0驱动近邻星系巡天项目并完善规划、执行、报告闭环；星语5.0+面向科学级望远镜的具身智能化改造。</p>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    Source: 人工智能驱动科教科研.pdf, Virtual-GOTTA section, 2026.5.27.
+  </footer>
+
+  <script>
+    const title = document.getElementById('detail-title');
+    const body = document.getElementById('detail-body');
+    document.querySelectorAll('.node').forEach((node) => {
+      node.addEventListener('click', () => {
+        document.querySelectorAll('.node').forEach((item) => item.classList.remove('active'));
+        node.classList.add('active');
+        title.textContent = node.dataset.title;
+        body.textContent = node.dataset.body;
+      });
+    });
+  </script>
+</body>
+</html>

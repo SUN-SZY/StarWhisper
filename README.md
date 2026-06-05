@@ -9,6 +9,12 @@
 </p>
 
 在国家天文台-之江实验室的支持下，我们开发了星语4.0天文大模型系列，包括语言模型、时序模型、多模态模型（7B-72B）。 
+## Virtual-GOTTA：基于人工智能的虚拟司天工程
+
+Virtual-GOTTA 面向科学级望远镜的具身智能化改造，目标是把 StarWhisper Telescope 从大模型观测助手推进到可连接真实观测链路的 AI Astrophysicist 工作流。系统以星语大模型为智能体入口，打通警报发布、台站信息、望远镜状态与实时响应，服务全球暂现源望远镜数据组网，并支撑超新星时钟等小于1天爆发的极早期候选警报。
+
+- [Virtual-GOTTA Map](https://yu-yang-li.github.io/StarWhisper/virtual-gotta-map.html)：交互式路线图
+- [Source Notes](https://yu-yang-li.github.io/StarWhisper/virtual-gotta-source.html)：基于《人工智能驱动科教科研》PPT 的依据说明
 
 ## 版本更新：
 

@@ -1,80 +1,125 @@
-# 星语4.0
+# 星语 5.0 / StarWhisper
 
 [![GitHub Repo stars](https://img.shields.io/github/stars/Yu-Yang-Li/StarWhisper?style=social)](https://github.com/Yu-Yang-Li/StarWhisper/stargazers)
 [![GitHub Code License](https://img.shields.io/github/license/Yu-Yang-Li/StarWhisper)](LICENSE)
 [![GitHub last commit](https://img.shields.io/github/last-commit/Yu-Yang-Li/StarWhisper)](https://github.com/Yu-Yang-Li/StarWhisper/commits/main)
 
-<br>
-        中文&nbsp ｜ &nbsp<a href="README_EN.md">English</a>&nbsp
+<p align="center">
+  中文 &nbsp;|&nbsp; <a href="README_EN.md">English</a>
 </p>
 
-在国家天文台-之江实验室的支持下，我们开发了星语4.0天文大模型系列，包括语言模型、时序模型、多模态模型（7B-72B）。 
-## Virtual-GOTTA：基于人工智能的虚拟司天工程
+**StarWhisper** 是面向天文学和 AI4S 的开源模型与智能体项目。在中国科学院国家天文台、之江实验室等单位支持下，项目从天文学语言模型、时序模型、多模态模型，推进到 **StarWhisper Telescope** 和 **Virtual-GOTTA**：让大模型不只回答天文问题，而是接入真实观测任务、台站信息、望远镜状态和实时响应流程，成为服务科教科研的 AI Astrophysicist 工作流。
 
-Virtual-GOTTA 面向科学级望远镜的具身智能化改造，目标是把 StarWhisper Telescope 从大模型观测助手推进到可连接真实观测链路的 AI Astrophysicist 工作流。系统以星语大模型为智能体入口，打通警报发布、台站信息、望远镜状态与实时响应，服务全球暂现源望远镜数据组网，并支撑超新星时钟等小于1天爆发的极早期候选警报。
+本页已按《人工智能驱动科教科研》PDF 的主线更新：从“AI 科教科研”到“具身智能望远镜”，再到全球暂现源望远镜数据组网与早期超新星候选预警。
 
-- [Virtual-GOTTA Map](https://yu-yang-li.github.io/StarWhisper/virtual-gotta-map.html)：交互式路线图
-- [Source Notes](https://yu-yang-li.github.io/StarWhisper/virtual-gotta-source.html)：基于《人工智能驱动科教科研》PPT 的依据说明
-- [Published Paper](https://doi.org/10.1038/s44172-025-00520-4)：StarWhisper Telescope 正式论文，Communications Engineering 4, 184 (2025)
+- [Virtual-GOTTA 交互式路线图](https://yu-yang-li.github.io/StarWhisper/virtual-gotta-map.html)
+- [PDF / PPT 来源说明](https://yu-yang-li.github.io/StarWhisper/virtual-gotta-source.html)
+- [最新正式论文：StarWhisper Telescope](https://doi.org/10.1038/s44172-025-00520-4)，*Communications Engineering* 4, 184 (2025)
 
-## 版本更新：
+---
 
-1.通过清洗订正科普、科研数据飞轮得到的数据，改进训练方法，进一步提升了模型的天文物理、代码与Agent能力，开源了星语3训练集于LLM_Data目录，即将开源星语4.0权重于魔搭平台。
+## 项目定位
 
-2.发布了[StarWhisper Pulsar](https://openreview.net/pdf?id=8SKgWpZiDL)的技术报告，一种SOTA的基于多模态大模型的脉冲星识别方法。
+| 方向 | 当前定位 | 仓库对应内容 |
+| --- | --- | --- |
+| 天文学大语言模型 | 面向科普、科研问答、代码与观测知识的领域模型 | `LLM_Data`、训练数据与模型说明 |
+| 时序与多模态模型 | 面向光变曲线、脉冲星识别、天文图像理解等任务 | StarWhisper LC、StarWhisper Pulsar、示例图像 |
+| StarWhisper Telescope | 面向端到端天文观测自动化的 agent 框架 | `NGSS` 近邻星系巡天项目代码 |
+| Virtual-GOTTA | 面向科学级望远镜的具身智能改造与观测工作流组网 | `docs/virtual-gotta-map.html`、路线图与来源说明 |
 
-3.发布了[StarWhisper LC](https://spj.science.org/doi/epdf/10.34133/icomputing.0110)的技术报告，基于迁移学习、大模型的光变曲线分类方法，上传了论文相关测试代码。
+StarWhisper 的核心目标不是单点模型展示，而是把天文学知识、数据处理、观测计划、望远镜控制和实时科学判断接到同一套可扩展智能体工作流里。
 
-<div align=center><img src="example/StarWhisper LC.png"/></div>
+---
 
-4.发布了正式论文 [StarWhisper Telescope: an AI framework for automating end-to-end astronomical observations](https://doi.org/10.1038/s44172-025-00520-4)，提出面向端到端天文观测自动化的 AI agent 框架，已应用于近邻星系巡天项目。
+## Virtual-GOTTA：AI 驱动的虚拟司天工程
 
-5.根据《Virtual-GOTTA：基于人工智能的虚拟司天工程》报告，星语5.0+将面向科学级望远镜的具身智能化改造：以星语大模型为智能体入口，打通警报发布、台站信息、望远镜状态与实时响应链路，服务全球暂现源望远镜数据组网系统，并支撑超新星时钟等小于1天爆发的极早期候选警报。交互式路线图见 [Virtual-GOTTA Map](https://yu-yang-li.github.io/StarWhisper/virtual-gotta-map.html)，PPT依据见 [Source Notes](https://yu-yang-li.github.io/StarWhisper/virtual-gotta-source.html)。
+PDF 中的 Virtual-GOTTA 把 StarWhisper Telescope 进一步推进为“具身智能望远镜”方向：大模型作为人机交互和任务编排入口，连接警报发布、台站信息、望远镜状态、观测计划、数据回传和实时响应。
 
-## 效果展示
+核心工作流包括：
 
-<div align=center><img src="example/图片1.png"/></div>
+1. **警报与科学目标接入**：对接暂现源、超新星早期候选、近邻星系巡天等科学任务。
+2. **台站与望远镜状态感知**：统一管理观测站信息、设备可用性、天气和观测窗口。
+3. **观测计划与执行闭环**：把模型决策转化为可执行观测计划，并在观测后回收数据和状态。
+4. **实时响应与候选筛选**：服务小于 1 天爆发早期候选预警，支持全球暂现源望远镜数据组网。
+5. **科教科研平台化**：把 AI 科研助手、虚拟科学家和真实望远镜任务结合，形成可教学、可演示、可复用的 AI4S 案例。
 
+[打开 Virtual-GOTTA 交互式路线图](https://yu-yang-li.github.io/StarWhisper/virtual-gotta-map.html)
 
-<div align=center><img src="example/图片2.png"/></div>
+---
 
+## 已开源与论文进展
+
+1. **StarWhisper 4.0 数据与训练增强**  
+   清洗并扩展科普、科研数据集，改进训练方法，提升天文物理、代码和 agent 能力。StarWhisper 3 训练数据已在 `LLM_Data` 目录开源，4.0 权重将发布到 ModelScope。
+
+2. **[StarWhisper Pulsar](https://openreview.net/pdf?id=8SKgWpZiDL)**  
+   面向脉冲星识别的多模态大模型技术报告。
+
+3. **[StarWhisper LC](https://spj.science.org/doi/epdf/10.34133/icomputing.0110)**  
+   基于迁移学习和大模型的光变曲线分类方法，论文相关测试代码已上传。
+
+   <div align="center"><img src="example/StarWhisper LC.png" width="680"/></div>
+
+4. **[StarWhisper Telescope](https://doi.org/10.1038/s44172-025-00520-4)**  
+   正式论文发表于 *Communications Engineering* 4, 184 (2025)。论文提出面向端到端天文观测自动化的 AI agent 框架，并在近邻星系巡天项目中落地。相关代码已在 `NGSS` 目录开源。
+
+   <div align="center"><img src="example/Starwhisper Telescope.png" width="680"/></div>
+
+5. **Virtual-GOTTA / StarWhisper 5.0+**  
+   基于《人工智能驱动科教科研》PDF，StarWhisper 5.0+ 面向具身智能望远镜与科学级观测工作流：将大模型、台站网络、望远镜状态、实时观测和科学预警整合为可交互、可扩展的科研智能体系统。
+
+---
+
+## 演示
+
+<div align="center"><img src="example/图片1.png" width="680"/></div>
+<div align="center"><img src="example/图片2.png" width="680"/></div>
+
+---
 
 ## 司天工程
 
-司天工程一期计划在国内多个优选观测台址布置54台（18组）口径1米级的大视场望远镜，组成多波段同时监测网络，每30分钟完成1万平方度天区的高精度三色“凝视”巡天。司天的采样频率比全球其它巡天项目高近两个量级，将突破目前探测时标的限制，在新的空域和时域下发现大批新天体、新现象，在宇宙极端高能爆发源、引力波电磁对应体、系外行星和太阳系天体等理论和观测研究中形成新的突破，在“两暗一黑三起源”等重大科学问题研究以及地球文明灾难预警等国家空间安全问题方面发挥重要作用。
+**司天工程** 是中国天文学家提出的大型时域天文基础设施。一期计划在国内多个优秀观测站部署 54 台口径 1 米级大视场望远镜，组成多波段同时监测网络，每 30 分钟完成约 1 万平方度天区的高精度三色“凝视”巡天。
 
-<div align=center><img src="example/sitian.png"/></div>
+司天工程将用于发现极端高能爆发源、引力波电磁对应体、系外行星、太阳系天体等新天体和新现象，并服务暗物质、黑洞、宇宙起源、行星防御等科学问题。StarWhisper 作为“司天大脑”的候选技术路径，探索如何把大模型、智能体和天文专业工具接入真实观测系统。
 
-其中司天"大脑"作为数据智能处理中枢，需要适配于天文的AI工具。StarWhisper作为其备选方案，在使用大模型整合天文知识的同时，探索多模态解决具体天文问题的可能性。
-## 许可证信息
+<div align="center"><img src="example/sitian.png" width="680"/></div>
 
-项目源码遵从Apache-2.0 license，Qwen Chat的模型权重使用需遵从相应许可。
+---
 
-## To do list
+## 许可
 
-<div align=center><img src="example/Starwhisper Telescope.png"/></div>
+- 源代码遵循 **Apache-2.0 License**。
+- Qwen Chat 等基础模型权重遵循其各自许可协议。
 
-### 大语言模型（科普方式）
+---
 
-- 调整监督微调中，通用数据和专业数据的比例，缓解灾难性遗忘问题。
-- 通过人工反馈的强化学习，进一步提升模型性能。
-- 通过特定数据集微调，提升模型总结能力，进一步适配知识库。
-- 完成天文知识图谱，与模型链接，进一步降低天文领域的幻觉现象。
+## 下一步
 
-### 专业多模态（科研工具）
+### 大语言模型：科学传播与科研助手
 
-- 开源在多模态微调权重。
-- 进一步探索多模态模型在天文图像生成与识别上应用的可能性。
+- 优化通用数据与专业数据比例，缓解灾难性遗忘。
+- 引入人工反馈强化学习，提升模型稳定性与科研可用性。
+- 构建天文知识图谱，降低领域幻觉。
+- 强化摘要、代码生成、观测任务理解和论文辅助能力。
 
+### 多模态模型：科研工具
 
-### 观测Agent（司天大脑）
+- 开源更多多模态微调权重。
+- 探索天文图像生成、识别和质量控制任务。
+- 连接光变曲线、图像、光谱和文本证据。
 
-- 提升模型在天文领域的编程能力。
-- 在MiniSiTian/司天样机上，进行与天文环境交互的Agent探索工作。
-- 考虑通过工具学习，链接天文专业工具。
-- 尝试Agent相关工作，验证作为司天大脑备选方案的可行性。
+### 观测 Agent：司天大脑
+
+- 提升模型在天文领域的编程和工具调用能力。
+- 在 MiniSiTian / 司天样机上进行人机交互 agent 验证。
+- 接入 ASTROLABE、CASA 等专业工具。
+- 验证 StarWhisper 作为“司天大脑”候选方案的可行性。
+
+---
 
 ## 引用
+
 如果这项工作对你有帮助，请引用最新正式论文：
 
 ```BibTeX
@@ -89,6 +134,7 @@ Virtual-GOTTA 面向科学级望远镜的具身智能化改造，目标是把 St
   url={https://doi.org/10.1038/s44172-025-00520-4}
 }
 ```
+
 ## Star History
 
 ![Star History Chart](https://api.star-history.com/svg?repos=Yu-Yang-Li/StarWhisper&type=Date)

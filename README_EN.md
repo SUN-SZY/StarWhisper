@@ -9,6 +9,12 @@
 </p>
 
 Under the support of the NAOC and ZheJiang Lab, we developed **StarWhisper 4.0**, a series of astronomical models including language models, time-series models, and multi-modal models (7B-72B).  
+## Virtual-GOTTA: AI-driven Virtual Sitian Project
+
+Virtual-GOTTA targets embodied-intelligence transformation for scientific telescopes, moving StarWhisper Telescope from a large-model observation assistant toward an AI Astrophysicist workflow connected to real observing operations. The system uses StarWhisper as the agent interface to connect alert release, station information, telescope status, and real-time response, supporting a global transient-source telescope data network and early supernova-clock candidate alerts within one day of explosion.
+
+- [Virtual-GOTTA Map](https://yu-yang-li.github.io/StarWhisper/virtual-gotta-map.html): interactive roadmap
+- [PPT Source Notes](https://yu-yang-li.github.io/StarWhisper/virtual-gotta-source.html): notes based on the *人工智能驱动科教科研* presentation
 
 ---
 

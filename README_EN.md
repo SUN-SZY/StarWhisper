@@ -34,7 +34,7 @@ Under the support of the NAOC and ZheJiang Lab, we developed **StarWhisper 4.0**
 
 5. **Virtual-GOTTA / StarWhisper 5.0+**  
    - Based on the presentation *Virtual-GOTTA: An AI-driven Virtual Sitian Project*, StarWhisper 5.0+ targets embodied intelligence for scientific telescopes.  
-   - The system uses StarWhisper as an agent interface to connect alert release, station information, telescope status, and real-time response, supporting a global transient-source telescope data network and early supernova-clock candidate alerts within one day of explosion. See the [Virtual-GOTTA Map](docs/virtual-gotta-map.html).  
+   - The system uses StarWhisper as an agent interface to connect alert release, station information, telescope status, and real-time response, supporting a global transient-source telescope data network and early supernova-clock candidate alerts within one day of explosion. See the [Virtual-GOTTA Map](https://yu-yang-li.github.io/StarWhisper/virtual-gotta-map.html).  
 
 ---
 

@@ -1,0 +1,12 @@
+{
+    "inherit": true,
+    "early_night": 0.5,
+    "midnight": 2.0,
+    "midmorning": 2.0,
+    "early_morning": 2.0,
+    "d_moon": 15,
+    "FilterType": ["L"],
+    "TotalExposureCount": 3,
+    "ExposureTime": 120,
+    "WaitTime": 1.0
+}
